@@ -15,16 +15,15 @@ jobs:
 
     - name: Download and Extract Binary
       run: |
-        wget https://github.com/rusakovichma/TicTaaC/archive/refs/tags/1.3.0.tar.gz -O TicTaac.tar.gz
-        tar -xzvf TicTaac.tar.gz
-        cd TicTaaC-1.3.0/cli
+        Invoke-WebRequest -Uri 'https://github.com/rusakovichma/TicTaaC/archive/refs/tags/1.3.0.tar.gz' -OutFile 'TicTaac.tar.gz'
+        tar -xzf TicTaac.tar.gz
+        Set-Location -Path 'TicTaaC-1.3.0\cli'
 
     - name: Run Binary in Docker
       run: |
-        # Install WSL (Ubuntu) and use it to run the Linux commands
-        wsl ls -la
-        wsl pwd
-        wsl cd TicTaaC-1.3.0/cli
-        wsl chmod +x *
-        wsl ls -la
-        wsl ./tic-taac.sh --out . --threatModel /mnt/c/Users/runner/work/TicTaac/TicTaac/CoffeeShopAdvanced-threat-model.yml --format html
+        Get-ChildItem | Format-Table -AutoSize
+        Get-Location
+        Set-Location -Path 'TicTaaC-1.3.0\cli'
+        Get-ChildItem | ForEach-Object { $_.IsReadOnly = $false }
+        Get-ChildItem | Format-Table -AutoSize
+        .\tic-taac.sh --out . --threatModel "${Env:USERPROFILE}\work\TicTaac\TicTaac\CoffeeShopAdvanced-threat-model.yml" --format html
