@@ -1,0 +1,24 @@
+name: TicTaac 
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run_binary:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Download and Extract Binary
+      run: |
+        # Replace the URL and binary name with your actual values
+        wget -O https://github.com/rusakovichma/TicTaaC/archive/refs/tags/1.3.0.tar.gz
+        tar -xzvf TicTaaC-1.3.0
+        chmod +x TicTaaC-1.3.0
+
+    - name: Run Binary
+      run: TicTaaC-1.3.0
