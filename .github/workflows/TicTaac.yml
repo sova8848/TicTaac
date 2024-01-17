@@ -21,6 +21,10 @@ jobs:
 
     - name: Run Binary in Docker
       run: |
+        ls -la
+        cd TicTaaC-1.3.0/cli
+        chmod +x *
+        ls -la
         ./bin/tic-taac.sh -h
        
         
