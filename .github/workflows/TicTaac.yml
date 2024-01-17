@@ -1,4 +1,4 @@
-name: TicTaac
+\name: TicTaac
 
 on:
   push:
@@ -27,8 +27,4 @@ jobs:
           --volume $THREAT_MODEL_DIR:/threat-model:z \
           --volume $(pwd)/report:/report:z \
           rusakovichma/tic-taac:$TT_VERSION \
-          /bin/bash -c "\
-            --threatModel /threat-model \
-            --outFormat html \
-            --out /report
-          "
+          /bin/bash -c "./TicTaaC --threatModel /threat-model --outFormat html --out /report"
