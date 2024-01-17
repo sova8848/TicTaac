@@ -1,4 +1,4 @@
-\name: TicTaac
+name: TicTaac
 
 on:
   push:
@@ -27,6 +27,8 @@ jobs:
         Get-ChildItem | ForEach-Object { $_.IsReadOnly = $false }
         .\tic-taac.sh --out . --threatModel "${Env:USERPROFILE}\work\TicTaac\TicTaac\CoffeeShopAdvanced-threat-model.yml" --format html
 
-    - name: Display HTML reports
-      run: |
-        Invoke-Item .\report\index.html
+    - name: Archive HTML reports
+      uses: actions/upload-artifact@v2
+      with:
+        name: html-reports
+        path: .\report\
