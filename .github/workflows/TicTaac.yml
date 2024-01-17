@@ -19,9 +19,14 @@ jobs:
         tar -xzvf TicTaac.tar.gz
         cd TicTaaC-1.3.0/cli
 
-    - name: Run Binary
+    - name: Run Binary in Docker
       run: |
-        pwd
-        chmod +x tictaac.sh
-        ls -la
-        bash ./tictaac.sh
+        docker run --rm \
+          -e user=$USER \
+          -u $(id -u ${USER}):$(id -g ${USER}) \
+          --volume $THREAT_MODEL_DIR:/threat-model:z \
+          --volume $(pwd)/report:/report:z \
+          rusakovichma/tic-taac:$TT_VERSION \
+          --threatModel /threat-model \
+          --outFormat html \
+          --out /report
