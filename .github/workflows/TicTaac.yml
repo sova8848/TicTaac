@@ -23,4 +23,5 @@ jobs:
       run: |
         pwd
         chmod +x tictaac.sh
-        ./tictaac.sh
+        ls -la
+        
