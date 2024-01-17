@@ -27,6 +27,8 @@ jobs:
           --volume $THREAT_MODEL_DIR:/threat-model:z \
           --volume $(pwd)/report:/report:z \
           rusakovichma/tic-taac:$TT_VERSION \
-          --threatModel /threat-model \
-          --outFormat html \
-          --out /report
+          /bin/bash -c "\
+            --threatModel /threat-model \
+            --outFormat html \
+            --out /report
+          "
