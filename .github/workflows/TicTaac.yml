@@ -24,5 +24,4 @@ jobs:
         pwd
         chmod +x tictaac.sh
         ls -la
-        ./tictaac.sh
-        
+        bash ./tictaac.sh
