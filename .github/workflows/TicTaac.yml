@@ -25,6 +25,7 @@ jobs:
     - name: Run TicTaac
       run: |
         pwd
+        ls -la
         ./tic-taac.sh
 #cd /home/runner/work/TicTaac/TicTaac/TicTaaC-1.3.0/cli
         
