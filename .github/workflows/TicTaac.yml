@@ -22,9 +22,10 @@ jobs:
     - name: Run Binary in Docker
       run: |
         ls -la
+        pwd
         cd TicTaaC-1.3.0/cli
         chmod +x *
         ls -la
-        ./tic-taac.sh -h
+        ./tic-taac.sh --out . --threatModel CoffeeShopAdvanced-threat-model.yml --format html
        
         
