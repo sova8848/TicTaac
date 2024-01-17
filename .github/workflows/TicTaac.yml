@@ -25,6 +25,6 @@ jobs:
         cd TicTaaC-1.3.0/cli
         chmod +x *
         ls -la
-        ./bin/tic-taac.sh -h
+        ./tic-taac.sh -h
        
         
