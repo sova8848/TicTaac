@@ -3,7 +3,7 @@ name: TicTaac
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   run_binary:
