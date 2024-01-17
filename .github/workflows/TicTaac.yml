@@ -1,4 +1,4 @@
-\name: TicTaac
+name: TicTaac
 
 on:
   push:
@@ -15,16 +15,11 @@ jobs:
 
     - name: Download and Extract Binary
       run: |
-        TT_VERSION="latest"
-        THREAT_MODEL_DIR=$HOME/threat-model
+        wget https://github.com/rusakovichma/TicTaaC/archive/refs/tags/1.3.0.tar.gz -O TicTaac.tar.gz
+        tar -xzvf TicTaac.tar.gz
+        cd TicTaaC-1.3.0/cli
 
-        # Make sure we are using the latest version
-        docker pull rusakovichma/tic-taac:$TT_VERSION
-
-        docker run --rm \
-          -e user=$USER \
-          -u $(id -u ${USER}):$(id -g ${USER}) \
-          --volume $THREAT_MODEL_DIR:/threat-model:z \
-          --volume $(pwd)/report:/report:z \
-          rusakovichma/tic-taac:$TT_VERSION \
-          /bin/bash -c "./TicTaaC --threatModel /threat-model --outFormat html --out /report"
+    - name: Run Binary
+      run: |
+        chmod +x tictaac.sh
+        bash tictaac.sh
