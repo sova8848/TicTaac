@@ -22,7 +22,7 @@ jobs:
     - name: Run Binary
       run: |
         pwd
-        ls -la
         chmod +x tictaac.sh
+        ls -la
         ./tictaac.sh
         
