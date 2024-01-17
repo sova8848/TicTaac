@@ -15,10 +15,11 @@ jobs:
 
     - name: Download and Extract Binary
       run: |
-        # Corrected the 'wget' command to use -O for output file
-        wget https://github.com/rusakovichma/TicTaaC/archive/refs/tags/1.3.0.tar.gz -O TicTaac.tar.gz
+        wget -O TicTaac.tar.gz https://github.com/rusakovichma/TicTaaC/archive/refs/tags/1.3.0.tar.gz
         tar -xzvf TicTaac.tar.gz
-        chmod +x TicTaaC
+        ls -la
+        pwd
+        chmod +x TicTaaC-1.3.0/TicTaaC
 
     - name: Run Binary
-      run: ./TicTaaC
+      run: ./TicTaaC-1.3.0/TicTaaC
