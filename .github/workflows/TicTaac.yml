@@ -21,17 +21,6 @@ jobs:
 
     - name: Run Binary in Docker
       run: |
-        TT_VERSION="latest"
-        THREAT_MODEL_DIR=$HOME/threat-model
-
-        # Make sure we are using the latest version
-        docker pull rusakovichma/tic-taac:$TT_VERSION
-
-        # Run the Docker container
-        docker run --rm \
-          -e user=$USER \
-          -u $(id -u ${USER}):$(id -g ${USER}) \
-          --volume $THREAT_MODEL_DIR:/threat-model:z \
-          --volume $(pwd)/report:/report:z \
-          rusakovichma/tic-taac:$TT_VERSION \
-          /bin/bash -c "cd /threat-model && sh /report"
+        pwd
+        chmod +x tictaac.sh
+        ./tictaac.sh
