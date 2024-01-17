@@ -17,9 +17,9 @@ jobs:
     - name: Download and Extract Binary
       run: |
         # Replace the URL and binary name with your actual values
-        wget https://github.com/rusakovichma/TicTaaC/archive/refs/tags/1.3.0.tar.gz
-        tar -xzvf TicTaaC-1.3.0
-        chmod +x TicTaaC-1.3.0
+        wget https://github.com/rusakovichma/TicTaaC/archive/refs/tags/1.3.0.tar.gz -o TicTaac
+        tar -xzvf TicTaaC
+        chmod +x TicTaaC
 
     - name: Run Binary
-      run: TicTaaC-1.3.0
+      run: TicTaaC
