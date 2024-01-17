@@ -18,9 +18,11 @@ jobs:
         wget -O TicTaac.tar.gz https://github.com/rusakovichma/TicTaaC/archive/refs/tags/1.3.0.tar.gz
         tar -xzvf TicTaac.tar.gz
         cd TicTaaC-1.3.0/cli
+        chmod +x tic-taac.sh
         ls -la
         pwd
-        chmod +x tic-taac.sh
 
     - name: Run TicTaac
-      run: ./tic-taac.sh
+      run: |
+        cd /home/runner/work/TicTaac/TicTaac/TicTaaC-1.3.0/cli
+        ./tic-taac.sh
