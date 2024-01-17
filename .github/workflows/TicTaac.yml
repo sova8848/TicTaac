@@ -1,4 +1,4 @@
-name: TicTaac
+\name: TicTaac
 
 on:
   push:
@@ -25,5 +25,8 @@ jobs:
         Get-Location
         Set-Location -Path 'TicTaaC-1.3.0\cli'
         Get-ChildItem | ForEach-Object { $_.IsReadOnly = $false }
-        Get-ChildItem | Format-Table -AutoSize
         .\tic-taac.sh --out . --threatModel "${Env:USERPROFILE}\work\TicTaac\TicTaac\CoffeeShopAdvanced-threat-model.yml" --format html
+
+    - name: Display HTML reports
+      run: |
+        Invoke-Item .\report\index.html
