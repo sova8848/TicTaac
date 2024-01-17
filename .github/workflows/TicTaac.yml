@@ -24,7 +24,7 @@ jobs:
         docker run --rm \
           -e user=$USER \
           -u $(id -u ${USER}):$(id -g ${USER}) \
-          --volume $THREAT_MODEL_DIR:/threat-model:z \
+          --volume /home/runner/work/TicTaac/TicTaac:/threat-model:z \
           --volume $(pwd)/report:/report:z \
           rusakovichma/tic-taac:$TT_VERSION \
           --threatModel /threat-model \
