@@ -9,6 +9,7 @@ jobs:
   run_binary:
     runs-on: ubuntu-latest
 
+
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
