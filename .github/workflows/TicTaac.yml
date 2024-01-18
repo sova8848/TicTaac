@@ -25,11 +25,11 @@ jobs:
     - name: Run TicTaaC
       run: |
         pwd
+        mkdir Reports
         cd tictaac/tic-taac/bin
         chmod +x *
         pwd
-        ls -la
-        mkdir Reports
+        ls -la 
         dos2unix ./tic-taac.sh
         ./tic-taac.sh --out /home/runner/work/TicTaac/TicTaac/Reports --threatModel /home/runner/work/TicTaac/TicTaac/Threat/
         ls -la
