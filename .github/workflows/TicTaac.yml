@@ -15,12 +15,12 @@ jobs:
 
     - name: Download and unzip TicTaaC
       run: |
-        wget -O tic-taac.zip https://github.com/rusakovichma/TicTaaC/releases/latest/download/tic-taac-1.3.0-release.zip
-        unzip tic-taac.zip -d tic-taac
+        wget -O tictaac.zip https://github.com/rusakovichma/TicTaaC/releases/latest/download/tic-taac-1.3.0-release.zip
+        unzip tictaac.zip -d tictaac
 
     - name: Run TicTaaC
       run: |
-        cd tic-taac/tic-taac/bin
+        cd tictaac/tic-taac/bin
         chmod +x *
         pwd
         ls -la
