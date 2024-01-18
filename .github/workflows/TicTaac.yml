@@ -29,8 +29,9 @@ jobs:
         chmod +x *
         pwd
         ls -la
+        mkdir Reports
         dos2unix ./tic-taac.sh
-        ./tic-taac.sh --out . --threatModel /home/runner/work/TicTaac/TicTaac/Threat/
+        ./tic-taac.sh --out /home/runner/work/TicTaac/TicTaac/Reports --threatModel /home/runner/work/TicTaac/TicTaac/Threat/
         ls -la
         
 
