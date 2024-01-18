@@ -30,7 +30,10 @@ jobs:
         pwd
         ls -la
         dos2unix ./tic-taac.sh
-        ./tic-taac.sh --out . --threatModel TicTaac\Threat\CoffeeShopAdvanced-threat-model.yml
+        ./tic-taac.sh --out /home/runner/work/TicTaac/TicTaac/ --threatModel /home/runner/work/TicTaac/TicTaac\Threat\CoffeeShopAdvanced-threat-model.yml
+        ls -la
+        cd ../../..
+        pwd
         ls -la
         
 
