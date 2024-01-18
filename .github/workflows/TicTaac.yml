@@ -1,34 +1,27 @@
-name: TicTaac
+name: Run TicTaaC
 
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
-  run_binary:
-    runs-on: windows-latest
+  build:
+    runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Repository
+    - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Download and Extract Binary
+    - name: Download and unzip TicTaaC
       run: |
-        Invoke-WebRequest -Uri 'https://github.com/rusakovichma/TicTaaC/archive/refs/tags/1.3.0.tar.gz' -OutFile 'TicTaac.tar.gz'
-        tar -xzf TicTaac.tar.gz
-        Set-Location -Path 'TicTaaC-1.3.0\cli'
+        wget -O tic-taac.zip https://github.com/rusakovichma/TicTaaC/releases/latest/download/tic-taac-1.3.0-release.zip
+        unzip tic-taac.zip -d tic-taac
 
-    - name: Run Binary in Docker
+    - name: Run TicTaaC
       run: |
-        Get-ChildItem | Format-Table -AutoSize
-        Get-Location
-        Set-Location -Path 'TicTaaC-1.3.0\cli'
-        Get-ChildItem | ForEach-Object { $_.IsReadOnly = $false }
-        .\tic-taac.sh --out . --threatModel "${Env:USERPROFILE}\work\TicTaac\TicTaac\CoffeeShopAdvanced-threat-model.yml" --format html
+        cd tic-taac
+        pwd
+        ls -la
+        ./tic-taac
 
-    - name: Archive HTML reports
-      uses: actions/upload-artifact@v2
-      with:
-        name: html-reports
-        path: .\report\
