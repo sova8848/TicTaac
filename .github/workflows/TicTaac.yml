@@ -26,9 +26,11 @@ jobs:
       run: |
         pwd
         cd tictaac/tic-taac/bin
+        chmod +x *
         pwd
         ls -la
         dos2unix ./tic-taac.sh
         ./tic-taac.sh --out . --threatModel TicTaac\Threat\CoffeeShopAdvanced-threat-model.yml
         ls -la
+        
 
