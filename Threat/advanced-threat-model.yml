@@ -1,0 +1,83 @@
+name: Advanced Data Flow for Threat Modeling
+version: 1.0.1
+assets:
+  - personal-data
+    sensitivity: sensitive
+    description: name, email #Any string. Description of the asset to be viewed in the report
+  - image-file
+    sensitivity: sensitive
+  - comments
+    sensitivity: non-sensitive
+elements:
+  - legitimate-user
+    name: User #Element's name to be viewed in the report
+    type: interactor # Setting element type explicitly. Values: interactor, proxy-server, web-server, database, external-service, internal-service, process
+    produced-assets:
+      - personal-data
+      - image-file
+      - comments
+  - proxy-server
+    name: Proxy Server
+    type: proxy-server
+    processed-assets:
+      - personal-data
+      - image-file
+      - comments
+  - web-server
+    name: API Server
+    type: web-server
+    processed-assets:
+      - personal-data
+      - image-file
+      - comments
+  - database
+    name: PostgreSQL
+    type: database
+    stored-assets:
+      - personal-data
+      - image-file
+      - comments
+boundaries:
+  - dmz
+    category: demilitarized-zone #Setting boundary type. Values: global-network, demilitarized-zone, corporate-network, closed-perimeter
+    elements:
+      - proxy-server
+  - internal-network
+    category: closed-perimeter
+    elements:
+      - web-server
+      - database
+  - internet
+    category: global-network
+    elements:
+      - legitimate-user
+data-flows:
+  - legitimate-user -> proxy-server
+    title: Users Request #Data flow description or name to be viewed in the report
+    authentication-method: openid #Authentication type of the source at the destination. Values: anonymous, credentials, basic, digest, openid, ldap, ntlm, kerberos, certificate, saml, bearer, s3, radius
+    authorization: read-write #How authorize what permission types has the source at the destination. Values: read, read-write, admin
+    account-management: external-sso #Setting account management responsibility at the destination. Values: external-sso, local-account, active-directory
+    encryption: yes #Values: yes, no
+    transferred-assets:
+      - personal-data
+      - image-file
+      - comments
+  - proxy-server -> web-server
+    title: Request to WebServer
+    authentication-method: certificate
+    authorization: read-write
+    encryption: no
+    transferred-assets:
+      - personal-data
+      - image-file
+      - comments
+  - web-server -> database
+    title: Database query
+    authentication-method: credentials
+    authorization: admin
+    encryption: no
+    account-management: local-account
+    transferred-assets:
+      - personal-data
+      - image-file
+      - comments
