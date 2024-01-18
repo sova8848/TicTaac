@@ -33,5 +33,11 @@ jobs:
         dos2unix ./tic-taac.sh
         ./tic-taac.sh --out /home/runner/work/TicTaac/TicTaac/Reports --threatModel /home/runner/work/TicTaac/TicTaac/Threat/
         ls -la
+    
+    - name: Upload Reports folder as artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: Tic-Taac-reports
+        path: TicTaac/TicTaac/Reports
         
 
