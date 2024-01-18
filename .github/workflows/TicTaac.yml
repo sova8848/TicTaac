@@ -38,6 +38,6 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: Tic-Taac-reports
-        path: TicTaac/TicTaac/Reports
+        path: /home/runner/work/TicTaac/TicTaac/Reports
         
 
