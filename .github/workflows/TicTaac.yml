@@ -20,8 +20,9 @@ jobs:
 
     - name: Run TicTaaC
       run: |
-        cd tic-taac
+        cd tic-taac/tic-taac/bin
+        chmod +x *
         pwd
         ls -la
-        ./tic-taac
+        ./tic-taac.sh
 
